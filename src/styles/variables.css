@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'RedHatText';
+    src: url('../assets/fonts/RedHatText-Regular.ttf') format('truetype');
+    font-style: normal;
+}
+
+:root {
+    /* Color Variables */
+    --primary-color: #FA8072;
+    --primary-color-hover: #c7665b;
+    --primary-color-2: #448EE3;
+    --primary-color-2-hover: #3774b9;
+    --primary-color-3: #B0E0E6;
+    --primary-color-3-hover: #B0E0E6aa;
+    --secondary-color: #D3D3D3;
+    --secondary-color-2: #193051;
+    --mint-green: #3EB489;
+    --ivory: #F4E5AC;
+    --warm-beige: #EEDAC3;
+    --background-color: #fff;
+    --text-color: #333;
+    --text-dark: #000;
+    --text-medium: #555;
+    --text-light: #777;
+    --text-xlight: #aaa;
+    --warning: #b80b1c;
+    /* Font Variables */
+    --primary-font: 'RedHatText', Arial, sans-serif;
+    --secondary-font: 'Georgia, serif';
+    /* color shadow  */
+    --box-shadow: #00000033;
+    --border-light: #ccc;
+    /* Font Sizes for General Text */
+    --font-size-xxsm: 0.625rem;
+    --font-size-xsm: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-xxl: 2rem;
+    /* Font Sizes for Headers */
+    --h1-size: 2rem;
+    --h2-size: 1.75rem;
+    --h3-size: 1.5rem;
+    --h4-size: 1.25rem;
+    --h5-size: 1rem;
+    --h6-size: 0.875rem;
+}
+
+
+/* Apply global styles */
+
+body {
+    font-family: var(--primary-font);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+}

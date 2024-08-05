@@ -1,0 +1,52 @@
+/* src/components/CommonComponents/Logo/Logo.css */
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.logo-primary {
+    color: var(--primary-color);
+    font-size: var(--font-size-xxl);
+}
+
+.logo-secondary {
+    color: var(--background-color);
+    font-size: var(--font-size-xl);
+    padding: 14px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+}
+
+.logo-primary-text {
+    display: flex;
+    align-items: center;
+    color: var(--primary-color);
+    font-size: var(--font-size-xxl);
+}
+
+.logo-primary-text .logo-text {
+    margin-left: 16px;
+    font-size: var(--font-size-lg);
+    font-weight: bold;
+    color: inherit;
+}
+
+.logo-secondary-text {
+    display: flex;
+    align-items: center;
+    color: var(--background-color);
+    font-size: var(--font-size-xl);
+    padding: 6px 16px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+}
+
+.logo-secondary-text .logo-text {
+    margin-left: 16px;
+    font-size: var(--font-size-lg);
+    color: inherit;
+    font-weight: bold;
+}

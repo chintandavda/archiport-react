@@ -1,0 +1,41 @@
+.feature-list {
+    height: 100%;
+    overflow: hidden;
+    max-width: 345px;
+}
+
+.feature-item {
+    display: flex !important;
+    align-items: start;
+    justify-content: start;
+    border: 1px solid var(--border-light);
+    padding: 10px;
+    border-radius: 8px;
+    background: transparent;
+    margin: 5px 0;
+    gap: 1em;
+    max-width: 320px;
+}
+
+.feature-image {
+    width: 50px;
+    height: 50px;
+}
+
+.feature-content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.feature-title {
+    margin: 0;
+    font-size: var(--font-size-lg);
+    font-weight: bold;
+}
+
+.feature-description {
+    color: var(--text-light);
+    font-size: var(--font-size-sm);
+    margin: 0;
+}

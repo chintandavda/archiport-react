@@ -1,0 +1,72 @@
+/* Container for the OTP Form */
+
+
+/* Heading of the Form */
+
+.otp-form h1 {
+    text-align: center;
+    color: var(--primary-color);
+}
+
+
+/* Labels for the Inputs */
+
+.otp-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.auth-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 5em;
+    color: var(--text-light);
+    border-radius: 250px;
+    box-shadow: 10px 10px 50px #00000025;
+    margin: 2em auto;
+    width: 80vw;
+    background-color: var(--background-color);
+}
+
+.google-signin-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-color);
+    color: black;
+    border: 1px solid var(--border-light);
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: var(--text-size-base);
+    transition: background-color 0.5s ease;
+}
+
+.google-signin-button:hover {
+    opacity: 0.4;
+}
+
+.google-signin-button svg {
+    margin-right: 16px;
+}
+
+.error-text {
+    font-size: var(--font-size-xsm);
+    text-align: left;
+    color: var(--warning);
+}
+
+.password-input-container {
+    position: relative;
+}
+
+.password-toggle-icon {
+    position: absolute;
+    right: 1rem;
+    top: 20%;
+    cursor: pointer;
+}

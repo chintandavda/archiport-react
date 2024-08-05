@@ -1,0 +1,108 @@
+/* Base Button Styles */
+
+.custom-button {
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: var(--primary-font);
+    color: var(--background-color);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+    text-transform: capitalize;
+}
+
+a.custom-button {
+    color: var(--background-color) !important;
+    margin: 0;
+}
+
+
+/* Button Variants */
+
+.custom-button.primary {
+    background-color: var(--primary-color);
+}
+
+.custom-button.primary:hover {
+    background-color: var(--primary-color-hover);
+}
+
+.custom-button.primary-2 {
+    background-color: var(--primary-color-2);
+}
+
+.custom-button.primary-2:hover {
+    background-color: var(--primary-color-2-hover);
+}
+
+.custom-button.primary-outline {
+    background-color: var(--background-color);
+    border: 2px solid var(--primary-color);
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.custom-button.primary-outline:hover {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+.custom-button.primary-2-outline {
+    background-color: var(--background-color);
+    border: 2px solid var(--primary-color-2);
+    color: var(--primary-color-2);
+    font-weight: bold;
+}
+
+.custom-button.primary-2-outline:hover {
+    background-color: var(--primary-color-2);
+    color: var(--background-color);
+}
+
+.custom-button.secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.custom-button.secondary:hover {
+    background-color: var(--primary-color);
+}
+
+
+/* Button Sizes */
+
+.custom-button.sm {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
+
+.custom-button.md {
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+.custom-button.lg {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+}
+
+.custom-button.xlg {
+    padding: 20px 40px;
+    font-size: 1.4rem;
+}
+
+
+/* Disabled Button */
+
+.custom-button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.custom-button:disabled:hover {
+    background-color: #ccc;
+}

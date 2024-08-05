@@ -1,0 +1,12 @@
+@import '~antd/dist/antd.css';
+
+:root {
+    --ant-primary-color: #FA8072;
+
+}
+
+/* Override specific styles */
+.ant-btn-primary {
+    background-color: var(--ant-primary-color);
+    border-color: var(--ant-primary-color);
+}
