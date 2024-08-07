@@ -59,6 +59,7 @@ const Login = () => {
                 email,
                 password,
             });
+
             const { access, refresh } = response.data;
             login(access, refresh); // Login user
             setMessageType("success");

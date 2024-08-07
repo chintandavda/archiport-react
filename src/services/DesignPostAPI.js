@@ -1,7 +1,8 @@
 // src/services/DesignPostAPI.jsx
 import axios from "axios";
 
-const API_BASE_URL = "http://127.0.0.1:3001";
+
+const API_BASE_URL = process.env.REACT_APP_NODE_DESIGN_SERVICE;
 
 const api = axios.create({
     baseURL: API_BASE_URL,
