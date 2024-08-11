@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-    Container,
-    Grid,
-    Card,
-    CardMedia,
-    CardContent,
-    Typography,
-} from "@mui/material";
+import { Container, Grid, Card, CardMedia, CardContent } from "@mui/material";
 import DesignPostAPI from "../../services/DesignPostAPI";
-import config from "../../config";
 
 const AllDesigns = () => {
     const [designs, setDesigns] = useState([]);
@@ -34,7 +26,7 @@ const AllDesigns = () => {
                             <CardMedia
                                 component="img"
                                 height="200"
-                                image={`${config.baseURL}/${design.image}`}
+                                image={`${design.image}`}
                                 alt={design.caption}
                             />
                             <CardContent>
