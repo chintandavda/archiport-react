@@ -1,7 +1,6 @@
+version: "3"
 services:
-    web:
+    react-app:
         build: .
         ports:
-            - "3000:3000"
-        environment:
-            - NODE_ENV=production
+            - "80:80"
