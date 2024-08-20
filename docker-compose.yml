@@ -1,6 +1,12 @@
 version: "3"
 services:
     react-app:
-        build: .
+        build:
+            context: .
+            args:
+                - REACT_APP_DJANGO_USERPROFILE_SERVICE=${REACT_APP_DJANGO_USERPROFILE_SERVICE}
+                - REACT_APP_NODE_DESIGN_SERVICE=${REACT_APP_NODE_DESIGN_SERVICE}
+        environment:
+            - NODE_ENV=production
         ports:
             - "80:80"
