@@ -2,7 +2,7 @@
 
 .custom-button {
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-family: var(--primary-font);
@@ -13,6 +13,10 @@
     justify-content: center;
     margin: 10px 0;
     text-transform: capitalize;
+}
+
+.custom-button i, .custom-button svg {
+    margin-right: 8px;
 }
 
 a.custom-button {
@@ -81,12 +85,12 @@ a.custom-button {
 }
 
 .custom-button.md {
-    padding: 10px 20px;
+    padding: 8px 16px;
     font-size: 1rem;
 }
 
 .custom-button.lg {
-    padding: 15px 30px;
+    padding: 12px 20px;
     font-size: 1.2rem;
 }
 
@@ -99,10 +103,10 @@ a.custom-button {
 /* Disabled Button */
 
 .custom-button:disabled {
-    background-color: #ddd;
+    background-color: #555;
     cursor: not-allowed;
 }
 
 .custom-button:disabled:hover {
-    background-color: #ccc;
+    background-color: #333;
 }

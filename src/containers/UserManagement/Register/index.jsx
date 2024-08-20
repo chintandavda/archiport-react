@@ -45,7 +45,7 @@ const Register = () => {
             <div className="">
                 <div className="signup-div">
                     <div className="feature-list-container">
-                        <FeatureList slidesToShow={4} interval={3000} />
+                        <FeatureList slidesToShow={3} interval={2000} />
                     </div>
                     <div className="register">
                         {isRegistered ? (

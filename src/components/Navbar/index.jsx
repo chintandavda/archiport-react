@@ -1,25 +1,37 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { AuthContext } from "../../context/AuthContext";
-import Button from "../CommonComponents/Button";
 import Logo from "../CommonComponents/Logo";
 import { Menu, Dropdown, Button as AntButton } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import userImg from "../../assets/images/user.jpg";
 import {
     UserOutlined,
-    // SettingOutlined,
+    SettingOutlined,
     LogoutOutlined,
-    HomeOutlined,
 } from "@ant-design/icons";
+import CreatePostModal from "../DesignComponents/CreatePostModal";
+import { RiImageAddFill } from "react-icons/ri";
+import { LoginOutlined } from "@mui/icons-material";
+import { AiOutlineUserAdd } from "react-icons/ai";
+import { LuUsers } from "react-icons/lu";
+import { HiOutlineHome } from "react-icons/hi2";
 
 const NavigationBar = () => {
-    const { isAuthenticated, user, logout } = useContext(AuthContext);
+    const { isAuthenticated, user, logout, setLoading } =
+        useContext(AuthContext);
     const navigate = useNavigate();
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
     const handleLogout = async () => {
+        setLoading(true);
         await logout();
+        setLoading(false);
         navigate("/");
     };
 
@@ -28,9 +40,9 @@ const NavigationBar = () => {
             <Menu.Item key="profile" icon={<UserOutlined />}>
                 <Link to="/profile">My Profile</Link>
             </Menu.Item>
-            {/* <Menu.Item key="settings" icon={<SettingOutlined />}>
-                <Link to="/settings">Settings</Link>
-            </Menu.Item> */}
+            <Menu.Item key="settings" icon={<SettingOutlined />}>
+                <Link to="/profile?tab=settings">Settings</Link>
+            </Menu.Item>
             <Menu.Item
                 key="logout"
                 icon={<LogoutOutlined />}
@@ -50,41 +62,58 @@ const NavigationBar = () => {
                     </Link>
                 </div>
                 <Link to="/">
-                    <HomeOutlined /> Home
+                    <HiOutlineHome /> Home
+                </Link>
+                <Link to="/profiles">
+                    <LuUsers /> Profiles
                 </Link>
             </div>
             <div className="navbar-links">
                 {isAuthenticated ? (
-                    <Dropdown overlay={menu} trigger={["hover"]}>
+                    <>
                         <AntButton
-                            type="default"
-                            className="profile-button"
-                            onClick={(e) => e.preventDefault()}
+                            type="primary"
                             size="large"
+                            onClick={openModal}
                         >
-                            <img
-                                src={user.profileImage || userImg}
-                                alt="Profile"
-                                className="profile-image"
-                            />
-                            <span>{user.fullName}</span>
-                            <DownOutlined />
+                            <RiImageAddFill /> Post Your Design
                         </AntButton>
-                    </Dropdown>
+                        <Dropdown overlay={menu} trigger={["hover"]}>
+                            <AntButton
+                                className="profile-button"
+                                onClick={(e) => e.preventDefault()}
+                                size="large"
+                            >
+                                <img
+                                    src={user.profileImage || userImg}
+                                    alt="Profile"
+                                    className="profile-image"
+                                />
+                                <span className="text-capitalize">
+                                    {user.fullName}
+                                </span>
+                                <DownOutlined />
+                            </AntButton>
+                        </Dropdown>
+                    </>
                 ) : (
                     <>
-                        <Link to="/register">Register</Link>
-                        <Button
-                            to="/login"
-                            variant="primary"
-                            size="md"
-                            className="login-button"
-                        >
-                            Login
-                        </Button>
+                        <Link to="/register">
+                            <AiOutlineUserAdd /> Register
+                        </Link>
+                        <Link to="/login">
+                            <AntButton
+                                type="primary"
+                                size="large"
+                                className="login-button"
+                            >
+                                <LoginOutlined /> Login
+                            </AntButton>
+                        </Link>
                     </>
                 )}
             </div>
+            <CreatePostModal isOpen={isModalOpen} onRequestClose={closeModal} />
         </nav>
     );
 };

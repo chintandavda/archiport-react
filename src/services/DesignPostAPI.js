@@ -26,6 +26,17 @@ const DesignPostAPI = {
             throw error;
         }
     },
+
+    getPublicDesigns: async () => {
+        try {
+            const response = await api.get("/designs/public-designs");
+            return response.data;
+        } catch (error) {
+            console.error("Error fetching public designs:", error);
+            throw error;
+        }
+    },
+
     getMyDesigns: async () => {
         try {
             const response = await api.get("/designs/my-designs");
@@ -35,6 +46,17 @@ const DesignPostAPI = {
             throw error;
         }
     },
+
+    getDesignsByUsername: async (username) => {
+        try {
+            const response = await api.get(`/designs/user/username/${username}`);
+            return response.data;
+        } catch (error) {
+            console.error(`Error fetching designs for username ${username}:`, error);
+            throw error;
+        }
+    },
+
     createDesign: async (designData) => {
         try {
             const response = await api.post("/designs", designData, {
@@ -48,6 +70,7 @@ const DesignPostAPI = {
             throw error;
         }
     },
+
     updateDesign: async (id, designData) => {
         try {
             const response = await api.put(`/designs/${id}`, designData);
@@ -57,12 +80,33 @@ const DesignPostAPI = {
             throw error;
         }
     },
+
     deleteDesign: async (id) => {
         try {
             const response = await api.delete(`/designs/${id}`);
             return response.data;
         } catch (error) {
             console.error("Error deleting design:", error);
+            throw error;
+        }
+    },
+
+    likeDesign: async (designId, username) => {
+        try {
+            const response = await api.post("/designs/like", { designId, username });
+            return response.data;
+        } catch (error) {
+            console.error("Error liking design:", error);
+            throw error;
+        }
+    },
+
+    unlikeDesign: async (designId, username) => {
+        try {
+            const response = await api.post("/designs/unlike", { designId, username });
+            return response.data;
+        } catch (error) {
+            console.error("Error unliking design:", error);
             throw error;
         }
     },

@@ -1,58 +1,55 @@
 import React from "react";
-import Slider from "react-slick";
+import { Carousel } from "antd";
 import "./FeatureList.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import featureImage from "../../../assets/images/login-container.jpg"; // Example image path
+import designInspiration from "../../../assets/images/FeatureList/designInspiration.png";
+import connectWithArchitect from "../../../assets/images/FeatureList/connectWithArchitect.png";
+import sellContent from "../../../assets/images/FeatureList/sellContent.png";
+import portfolio from "../../../assets/images/FeatureList/portfolio.png";
+import uploadDesign from "../../../assets/images/FeatureList/uploadDesign.png";
 
 const FeatureList = ({ slidesToShow, interval = 3000 }) => {
     const features = [
         {
-            image: featureImage,
+            image: designInspiration,
             title: "Design Inspirations",
-            description: "Detail of feature 1",
+            description:
+                "Explore a wide range of design inspirations from top architects and designers worldwide.",
         },
         {
-            image: featureImage,
-            title: "Feature 2",
-            description: "Detail of feature 2",
+            image: uploadDesign,
+            title: "Upload Designs",
+            description:
+                "Share your creative ideas by uploading your own designs and showcase your unique talent.",
         },
         {
-            image: featureImage,
-            title: "Feature 3",
-            description: "Detail of feature 3",
+            image: connectWithArchitect,
+            title: "Connect With Architects",
+            description:
+                "Build connections with leading architects and collaborate on exciting projects okay done with this.",
         },
         {
-            image: featureImage,
-            title: "Feature 4",
-            description: "Detail of feature 4",
+            image: sellContent,
+            title: "Sell Your Content",
+            description:
+                "Monetize your design skills by selling your creative content to a global audience.",
         },
         {
-            image: featureImage,
-            title: "Feature 5",
-            description: "Detail of feature 5",
-        },
-        {
-            image: featureImage,
-            title: "Feature 6",
-            description: "Detail of feature 6",
+            image: portfolio,
+            title: "Make Portfolio",
+            description:
+                "Create a professional portfolio to exhibit your work and attract potential clients and employers.",
         },
     ];
 
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: slidesToShow,
-        slidesToScroll: 1,
-        vertical: true,
-        verticalSwiping: true,
-        autoplay: true,
-        autoplaySpeed: interval,
-    };
-
     return (
-        <Slider {...settings} className="feature-list">
+        <Carousel
+            autoplay
+            autoplaySpeed={interval}
+            dots={false}
+            vertical
+            slidesToShow={slidesToShow}
+            className="feature-list"
+        >
             {features.map((feature, index) => (
                 <div key={index} className="feature-item">
                     <img
@@ -61,14 +58,14 @@ const FeatureList = ({ slidesToShow, interval = 3000 }) => {
                         className="feature-image"
                     />
                     <div className="feature-content">
-                        <h3 className="feature-title">{feature.title}</h3>
+                        <h4 className="feature-title">{feature.title}</h4>
                         <p className="feature-description">
                             {feature.description}
                         </p>
                     </div>
                 </div>
             ))}
-        </Slider>
+        </Carousel>
     );
 };
 

@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import api from "../../../services/api";
-import Message from "../../../components/CommonComponents/Message";
 import Button from "../../../components/CommonComponents/Button";
 import { useNavigate } from "react-router-dom";
 import GoogleSignInButton from "../GoogleSignInButton";
+import { notification } from "antd";
 
 const RegisterForm = ({ onSuccess }) => {
     const [email, setEmail] = useState("");
     const [fullName, setFullName] = useState("");
-    const [message, setMessage] = useState("");
-    const [messageType, setMessageType] = useState("");
+    const [loading, setLoading] = useState(false);
     const [emailError, setEmailError] = useState("");
     const navigate = useNavigate();
 
@@ -30,18 +29,24 @@ const RegisterForm = ({ onSuccess }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        setLoading(true);
         try {
             const response = await api.post("register/", {
                 email,
                 full_name: fullName,
             });
-            setMessageType("success");
-            setMessage(response.data.message);
+            notification.success({
+                message: "Success",
+                description: response.data.message || "Registration successful",
+            });
             onSuccess(email);
         } catch (error) {
-            setMessageType("error");
-            setMessage(error.response.data.error || "An error occurred");
+            notification.error({
+                message: "Error",
+                description: error.response?.data?.error || "An error occurred",
+            });
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -74,8 +79,12 @@ const RegisterForm = ({ onSuccess }) => {
                     placeholder="Email"
                     required
                 />
-                <Message message={message} type={messageType} />
-                <Button type="submit" variant="primary" size="md">
+                <Button
+                    type="submit"
+                    variant="primary"
+                    size="md"
+                    loading={loading}
+                >
                     Sign Up
                 </Button>
             </form>

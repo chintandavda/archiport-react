@@ -1,0 +1,8 @@
+.sign-up-here {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--primary-color-3-hover);
+    padding: 12px 24px;
+    margin: 1em 0;
+    border-radius: 8px;
+}

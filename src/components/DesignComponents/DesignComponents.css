@@ -1,0 +1,44 @@
+.my-masonry-grid {
+    display: flex;
+    margin-left: -30px;
+    /* Adjust this based on your desired gutter size */
+    width: auto;
+}
+
+.my-masonry-grid_column {
+    padding-left: 30px;
+    /* Adjust this based on your desired gutter size */
+    background-clip: padding-box;
+}
+
+.my-masonry-grid_column>div {
+    margin-bottom: 30px;
+    /* Adjust this based on your desired gutter size */
+}
+
+.custom-skeleton-image {
+    display: flex !important;
+    width: 100% !important;
+    margin-bottom: 12px;
+}
+
+.post-card-details {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.post-card-details h5 {
+    text-transform: capitalize;
+    margin: 0;
+}
+
+.custom-card p {
+    margin: 0;
+}
+
+.post-card-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}

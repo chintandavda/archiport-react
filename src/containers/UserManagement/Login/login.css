@@ -5,7 +5,6 @@
     margin: 2em 4em;
 }
 
-.login-page {}
 
 .login h1 {
     color: var(--primary-color);
@@ -19,6 +18,8 @@
 .login-container {
     display: flex;
     justify-content: center;
+    height: 90vh;
+    margin: 2em 0;
 }
 
 .login-bg {

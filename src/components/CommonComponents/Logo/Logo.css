@@ -29,7 +29,21 @@
 
 .logo-primary-text .logo-text {
     margin-left: 16px;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xlg);
+    font-weight: bold;
+    color: inherit;
+}
+
+.logo-primary-text-lg {
+    display: flex;
+    align-items: center;
+    color: var(--primary-color);
+    font-size: var(--font-size-xxxl);
+}
+
+.logo-primary-text-lg .logo-text {
+    margin-left: 16px;
+    font-size: var(--font-size-xxxl);
     font-weight: bold;
     color: inherit;
 }

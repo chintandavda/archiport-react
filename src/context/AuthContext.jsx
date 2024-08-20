@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import api from "../services/api";
 import ProfileAPI from "../services/ProfileAPI";
+import Loader from "../components/Loader";
 
 export const AuthContext = createContext();
 
@@ -14,7 +15,7 @@ export const AuthProvider = ({ children }) => {
             const token = localStorage.getItem("access_token");
             if (token) {
                 try {
-                    const response = await api.get("user/", {
+                    const response = await api.get("get_user/", {
                         headers: {
                             Authorization: `Bearer ${token}`,
                         },
@@ -45,14 +46,9 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("refresh_token", refresh);
         setIsAuthenticated(true);
         try {
-            const response = await api.get("user/", {
-                headers: {
-                    Authorization: `Bearer ${access}`,
-                },
-            });
             const userProfile = await ProfileAPI.getUserProfile(access);
             setUser({
-                ...response.data,
+                ...userProfile,
                 fullName: `${userProfile.first_name} ${userProfile.last_name}`,
                 profileImage: userProfile.profile_image,
             });
@@ -87,9 +83,17 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider
-            value={{ isAuthenticated, user, loading, login, logout }}
+            value={{
+                isAuthenticated,
+                user,
+                setUser,
+                loading,
+                login,
+                logout,
+                setLoading,
+            }}
         >
-            {children}
+            {loading ? <Loader /> : children}
         </AuthContext.Provider>
     );
 };

@@ -11,6 +11,15 @@
     text-decoration: underline;
 }
 
+.link-red {
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
 
 /* Header Styles */
 
@@ -84,6 +93,14 @@ input:disabled {
     width: 100%;
 }
 
+.main-content {
+    margin-top: 100px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
 
 /* Media Queries */
 
@@ -96,6 +113,7 @@ input:disabled {
         --font-size-lg: 0.9375rem;
         --font-size-xl: 1.125rem;
         --font-size-xxl: 1.375rem;
+        --font-size-xxxl: 1.425rem;
         --h1-size: 1.25rem;
         --h2-size: 1.125rem;
         --h3-size: 1rem;
@@ -114,6 +132,7 @@ input:disabled {
         --font-size-lg: 1rem;
         --font-size-xl: 1.25rem;
         --font-size-xxl: 1.5rem;
+        --font-size-xxxl: 1.75rem;
         --h1-size: 1.5rem;
         --h2-size: 1.375rem;
         --h3-size: 1.25rem;
@@ -132,6 +151,7 @@ input:disabled {
         --font-size-lg: 1.125rem;
         --font-size-xl: 1.375rem;
         --font-size-xxl: 1.75rem;
+        --font-size-xxxl: 2rem;
         --h1-size: 1.5rem;
         --h2-size: 1.375rem;
         --h3-size: 1.25rem;
@@ -150,6 +170,7 @@ input:disabled {
         --font-size-lg: 1.25rem;
         --font-size-xl: 1.5rem;
         --font-size-xxl: 2rem;
+        --font-size-xxxl: 2.5rem;
         --h1-size: 2rem;
         --h2-size: 1.75rem;
         --h3-size: 1.5rem;

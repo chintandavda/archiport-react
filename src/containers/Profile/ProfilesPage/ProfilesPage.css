@@ -1,0 +1,24 @@
+.profile-avatar {
+    display: flex;
+    margin: 1em auto 0em auto;
+}
+
+.profile-avatar img {
+    border-radius: 50%;
+}
+
+.profiles-page-container .ant-card-meta-title {
+    text-align: center;
+    text-transform: capitalize;
+    font-size: var(--font-size-lg);
+    color: var(--mint-green);
+}
+
+.profiles-page-container .ant-card-meta-title a {
+    color: var(--mint-green);
+}
+
+.profiles-page-container .ant-card-meta-description {
+    text-align: center;
+    color: var(--);
+}

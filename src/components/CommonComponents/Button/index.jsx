@@ -1,6 +1,8 @@
 import React from "react";
 import "./Button.css";
 import { Link } from "react-router-dom";
+import { Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const Button = ({
     onClick,
@@ -11,11 +13,12 @@ const Button = ({
     className = "",
     disabled = false,
     to,
+    loading = false,
 }) => {
     const classNames = `custom-button ${variant} ${size} ${className}`;
     if (to) {
         return (
-            <Link to={to} className={classNames} onClick={onClick}>
+            <Link to={to} className="link" onClick={onClick}>
                 {children}
             </Link>
         );
@@ -25,8 +28,18 @@ const Button = ({
             type={type}
             className={classNames}
             onClick={onClick}
-            disabled={disabled}
+            disabled={disabled || loading}
         >
+            {loading && (
+                <Spin
+                    size="medium"
+                    indicator={<LoadingOutlined spin />}
+                    style={{
+                        marginRight: "8px",
+                        color: "white",
+                    }}
+                />
+            )}
             {children}
         </button>
     );

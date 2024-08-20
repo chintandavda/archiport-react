@@ -19,6 +19,13 @@ const Logo = ({ type }) => {
                         <span className="logo-text">ArchiPort</span>
                     </div>
                 );
+            case "primary-text-lg":
+                return (
+                    <div className="logo-primary-text-lg">
+                        <FaDraftingCompass />
+                        <span className="logo-text">ArchiPort</span>
+                    </div>
+                );
             case "secondary-text":
                 return (
                     <div className="logo-secondary-text">
