@@ -1,6 +1,20 @@
 # Stage 1: Build the React app
 FROM node:20-alpine as build
 
+# Set environment variables only for production
+ARG NODE_ENV
+ENV NODE_ENV=$NODE_ENV
+
+# Conditional environment variable assignment for production
+ARG REACT_APP_DJANGO_USERPROFILE_SERVICE
+ARG REACT_APP_NODE_DESIGN_SERVICE
+
+# Apply the environment variables only when NODE_ENV is production
+RUN if [ "$NODE_ENV" = "production" ]; then \
+    export REACT_APP_DJANGO_USERPROFILE_SERVICE=$REACT_APP_DJANGO_USERPROFILE_SERVICE && \
+    export REACT_APP_NODE_DESIGN_SERVICE=$REACT_APP_NODE_DESIGN_SERVICE; \
+    fi
+
 # Set working directory
 WORKDIR /app
 
