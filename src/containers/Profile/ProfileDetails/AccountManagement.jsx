@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import api from "../../../services/api";
 import { AuthContext } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Modal, Card, Button, Row, Col, Space, notification } from "antd";
+import { Modal, Button, Row, Col, Space, notification } from "antd";
 
 const AccountManagement = ({ user }) => {
     const { logout } = useContext(AuthContext);
@@ -18,13 +18,12 @@ const AccountManagement = ({ user }) => {
             cancelText: "Cancel",
             onOk: async () => {
                 try {
-                    const token = localStorage.getItem("token");
                     await api.delete(`delete-user/${user.id}/`, {
                         headers: {
-                            Authorization: `Token ${token}`,
+                            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
                         },
                     });
-                    logout();
+                    await logout();
                     notification.success({
                         message: "Success",
                         description: "Account Deleted Successfully.",

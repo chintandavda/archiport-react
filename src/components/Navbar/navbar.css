@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--background-color);
+    background-color: #ffffffde;
     padding: 0em 2em;
     margin: 1em;
     border-radius: 0.5em;
@@ -53,4 +53,44 @@
     height: 30px;
     border-radius: 50%;
     margin-right: 10px;
+}
+
+
+/* Hide the links and show the hamburger menu on mobile view */
+.hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+/* Hide navbar links in mobile view */
+@media screen and (max-width: 768px) {
+    .navbar-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .navbar {
+        padding: 0em 0.5em;
+    }
+
+}
+
+/* Show navbar links when the mobile menu is open */
+.navbar-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #fff;
+    width: 100%;
+    padding: 1em;
+    border-radius: 0.5em;
+    box-shadow: 0px 2px 6px var(--box-shadow);
 }

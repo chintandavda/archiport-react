@@ -72,3 +72,23 @@
     height: auto;
     justify-content: space-around;
 }
+
+@media screen and (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        margin: 1em 0;
+    }
+
+    .login-info {
+        display: none;
+    }
+
+    .login-bg {
+        margin: 1em;
+    }
+
+    .login {
+        padding: 1em 2em;
+        margin: 1em 2em;
+    }
+}

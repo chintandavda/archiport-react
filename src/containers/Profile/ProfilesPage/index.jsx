@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import {
     Avatar,
     Skeleton,
-    notification,
+    message,
     Input,
     Row,
     Col,
@@ -28,28 +28,26 @@ const ProfilesPage = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchProfiles = async () => {
-            setLoading(true);
-            try {
-                const token = localStorage.getItem("access_token");
-                const data = await ProfileAPI.getAllProfiles(token);
-                setProfiles(data);
-                console.log(profiles);
-            } catch (error) {
-                notification.error({
-                    message: "Error",
-                    description:
-                        error.response?.data?.error ||
-                        "Failed to load profiles.",
-                });
-            } finally {
-                setLoading(false);
-            }
-        };
+    const fetchProfiles = useCallback(async () => {
+        setLoading(true);
+        try {
+            const token = localStorage.getItem("access_token");
+            const data = await ProfileAPI.getAllProfiles(token);
+            setProfiles(data);
+        } catch (error) {
+            message.error(
+                error.response?.data?.error || "Failed to load profiles.",
+            );
+        } finally {
+            setLoading(false);
+        }
+    }, []);
 
-        fetchProfiles();
-    }, [isAuthenticated]);
+    useEffect(() => {
+        if (isAuthenticated) {
+            fetchProfiles();
+        }
+    }, [isAuthenticated, fetchProfiles]);
 
     const filteredProfiles = searchTerm
         ? profiles.filter(
@@ -94,7 +92,7 @@ const ProfilesPage = () => {
                 <Row gutter={[16, 16]}>
                     {filteredProfiles.length > 0 ? (
                         filteredProfiles.map((profile) => (
-                            <Col xs={24} sm={12} md={8} lg={6} key={profile.id}>
+                            <Col xs={12} sm={12} md={8} lg={6} key={profile.id}>
                                 <Card
                                     hoverable
                                     cover={

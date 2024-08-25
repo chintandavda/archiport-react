@@ -1,36 +1,36 @@
 .profile-header {
-    position: relative;
+    background-color: var(--body-background);
+    padding: 1.5em 3em;
+    border-radius: 1em;
     margin-bottom: 20px;
+    position: relative;
 }
 
-.background-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
+/* Profile info container */
 .profile-info {
     display: flex;
     gap: 32px;
     align-items: center;
 }
 
-.profile-header {
-    background-color: var(--body-background);
-    padding: 1.5em 3em;
-    border-radius: 1em;
-}
-
+/* User image */
 .user-img {
-    min-width: 200px;
+    width: 200px;
     height: 200px;
     border-radius: 50%;
     border: 5px solid var(--background-color);
     box-shadow: 0px 0px 10px var(--box-shadow);
 }
 
+/* Profile details */
+.profile-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .user-name {
-    margin-top: 10px;
     font-size: var(--h2-size);
     margin-bottom: 0;
     text-transform: capitalize;
@@ -44,4 +44,88 @@
 .profile-details .about {
     font-size: var(--font-size-sm);
     color: var(--text-light);
+}
+
+.profile-settings-content {
+    padding: 0px 24px;
+    margin: 0;
+}
+
+.profile-settings-row {
+    min-height: 60vh;
+    padding: 24px;
+    background-color: #f0f2f5;
+}
+
+.profile-settings-card {
+    border-radius: 8px;
+    padding: 24px;
+    background-color: var(--background-color);
+    box-shadow: 0 2px 8px var(--box-shadow);
+}
+
+/* Media Queries for responsiveness */
+@media screen and (max-width: 1024px) {
+
+    /* On medium screens, make the image smaller and reduce the gap */
+    .user-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .profile-info {
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    /* On smaller screens, stack the profile image and details vertically */
+    .profile-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .user-img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-details {
+        gap: 0px;
+    }
+
+    .profile-info p {
+        margin: 0px;
+    }
+
+    .mobile-menu-button {
+        display: block;
+    }
+
+    .mobile-menu-button {
+        display: block !important;
+    }
+
+    .ant-layout-sider {
+        display: none !important;
+    }
+
+    .profile-settings-content {
+        padding: 0px 8px;
+    }
+
+    .profile-settings-row {
+        padding: 8px;
+    }
+
+    .profile-settings-card {
+        padding: 8px;
+    }
+
+    .profile-settings-card .ant-card-body {
+        padding: 8px;
+    }
+
 }

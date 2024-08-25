@@ -81,3 +81,26 @@
     justify-content: center;
     padding: 16px;
 }
+
+@media screen and (max-width: 768px) {
+    .signup-div {
+        padding: 0.4em;
+        margin: 1em;
+        width: 90vw;
+        max-width: 1000px;
+        flex-direction: column-reverse;
+    }
+
+    .signup-div>div {
+        width: 90%;
+        margin: 1em;
+    }
+
+    .auth-header .logo {
+        height: 40px;
+    }
+
+    .auth-header .logo-text {
+        height: 30px;
+    }
+}

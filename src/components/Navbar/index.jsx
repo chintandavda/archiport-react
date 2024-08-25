@@ -4,7 +4,7 @@ import "./navbar.css";
 import { AuthContext } from "../../context/AuthContext";
 import Logo from "../CommonComponents/Logo";
 import { Menu, Dropdown, Button as AntButton } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import { DownOutlined, MenuOutlined } from "@ant-design/icons";
 import userImg from "../../assets/images/user.jpg";
 import {
     UserOutlined,
@@ -24,9 +24,14 @@ const NavigationBar = () => {
     const navigate = useNavigate();
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     const handleLogout = async () => {
         setLoading(true);
@@ -55,20 +60,24 @@ const NavigationBar = () => {
 
     return (
         <nav className="navbar">
-            <div className="navbar-links">
-                <div className="navbar-brand">
-                    <Link to="/">
-                        <Logo type="secondary-text" />
-                    </Link>
-                </div>
+            <div className="navbar-brand">
+                <Link to="/">
+                    <Logo type="secondary-text" />
+                </Link>
+            </div>
+
+            {/* Hamburger Menu Icon */}
+            <button className="hamburger" onClick={toggleMenu}>
+                <MenuOutlined />
+            </button>
+
+            <div className={`navbar-links ${isMenuOpen ? "active" : ""}`}>
                 <Link to="/">
                     <HiOutlineHome /> Home
                 </Link>
                 <Link to="/profiles">
                     <LuUsers /> Profiles
                 </Link>
-            </div>
-            <div className="navbar-links">
                 {isAuthenticated ? (
                     <>
                         <AntButton
@@ -113,6 +122,7 @@ const NavigationBar = () => {
                     </>
                 )}
             </div>
+
             <CreatePostModal isOpen={isModalOpen} onRequestClose={closeModal} />
         </nav>
     );

@@ -10,15 +10,21 @@ import PersonalDetails from "./PersonalDetails";
 import SecurityAndPrivacy from "./Security&Privacy";
 import AdditionalDetails from "./AdditionalDetails";
 import AccountManagement from "./AccountManagement";
-import { Card, Row, Col, Layout, Menu } from "antd";
+import { Card, Row, Col, Layout, Menu, Drawer, Button } from "antd";
 
 const { Sider, Content } = Layout;
 
 const ProfileDetails = ({ user }) => {
+    const [collapsed, setCollapsed] = useState(false);
+    const [drawerVisible, setDrawerVisible] = useState(false);
     const [selectedKey, setSelectedKey] = useState("personal");
 
     const handleMenuClick = (e) => {
         setSelectedKey(e.key);
+    };
+
+    const toggleDrawer = () => {
+        setDrawerVisible(!drawerVisible);
     };
 
     const renderContent = () => {
@@ -40,12 +46,22 @@ const ProfileDetails = ({ user }) => {
 
     return (
         <Layout>
-            <Sider theme="light" style={{ borderRight: "1px solid #ddd" }}>
+            {/* Sidebar */}
+            <Sider
+                theme="light"
+                collapsed={collapsed}
+                breakpoint="md"
+                collapsedWidth={0}
+                trigger={null} // Disable the default trigger
+                style={{
+                    borderRight: "1px solid #ddd",
+                    display: window.innerWidth >= 768 ? "block" : "none",
+                }}
+            >
                 <Menu
                     mode="inline"
                     selectedKeys={[selectedKey]}
                     onClick={handleMenuClick}
-                    style={{ borderRight: "none" }}
                 >
                     <Menu.Item key="personal" icon={<UserOutlined />}>
                         Personal Details
@@ -54,50 +70,78 @@ const ProfileDetails = ({ user }) => {
                         Additional Details
                     </Menu.Item>
                     <Menu.Item key="security" icon={<LockOutlined />}>
-                        {/* Security & Privacy */}
                         Change Password
                     </Menu.Item>
-                    {/* <Menu.Item key="notifications" icon={<BellOutlined />}>
-                        Notifications
-                    </Menu.Item> */}
                     <Menu.Item key="account" icon={<SettingOutlined />}>
                         Account Management
                     </Menu.Item>
                 </Menu>
             </Sider>
+
+            {/* Drawer for mobile view */}
+            <Drawer
+                title="Menu"
+                placement="left"
+                onClose={toggleDrawer}
+                visible={drawerVisible}
+                bodyStyle={{ padding: 0 }}
+            >
+                <Menu
+                    mode="inline"
+                    selectedKeys={[selectedKey]}
+                    onClick={(key) => {
+                        handleMenuClick(key);
+                        toggleDrawer();
+                    }}
+                >
+                    <Menu.Item key="personal" icon={<UserOutlined />}>
+                        Personal Details
+                    </Menu.Item>
+                    <Menu.Item key="additional" icon={<InfoCircleOutlined />}>
+                        Additional Details
+                    </Menu.Item>
+                    <Menu.Item key="security" icon={<LockOutlined />}>
+                        Change Password
+                    </Menu.Item>
+                    <Menu.Item key="account" icon={<SettingOutlined />}>
+                        Account Management
+                    </Menu.Item>
+                </Menu>
+            </Drawer>
+
+            {/* Main Content */}
             <Layout style={{ backgroundColor: "#fff" }}>
-                <Content style={{ margin: "0" }}>
-                    <div
+                <Content className="profile-settings-content">
+                    <Row
+                        justify="center"
+                        align="middle"
+                        className="profile-settings-row"
+                    >
+                        <Col xs={24} sm={18} md={16} lg={20}>
+                            <Card
+                                bordered={false}
+                                className="profile-settings-card"
+                            >
+                                {renderContent()}
+                            </Card>
+                        </Col>
+                    </Row>
+
+                    {/* Mobile Menu Toggle Button */}
+                    <Button
+                        type="primary"
+                        onClick={toggleDrawer}
+                        className="mobile-menu-button"
                         style={{
-                            padding: "0 24px",
-                            minHeight: 480,
+                            display: "none",
+                            position: "fixed",
+                            bottom: "20px",
+                            left: "20px",
+                            zIndex: 1000,
                         }}
                     >
-                        <Row
-                            justify="center"
-                            align="middle"
-                            style={{
-                                minHeight: "60vh",
-                                backgroundColor: "#f0f2f5",
-                                padding: "24px",
-                            }}
-                        >
-                            <Col xs={22} sm={18} md={12} lg={20}>
-                                <Card
-                                    bordered={false}
-                                    style={{
-                                        borderRadius: "8px",
-                                        padding: "24px",
-                                        backgroundColor: "#ffffff",
-                                        boxShadow:
-                                            "0 2px 8px rgba(0, 0, 0, 0.15)",
-                                    }}
-                                >
-                                    {renderContent()}
-                                </Card>
-                            </Col>
-                        </Row>
-                    </div>
+                        Menu
+                    </Button>
                 </Content>
             </Layout>
         </Layout>

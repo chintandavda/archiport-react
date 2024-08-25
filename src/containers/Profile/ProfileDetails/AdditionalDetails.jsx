@@ -82,7 +82,7 @@ const AdditionalDetails = () => {
                 initialValues={initialData}
             >
                 <Row gutter={16}>
-                    <Col span={8}>
+                    <Col xs={24} sm={12} md={8}>
                         {/* Gender Field */}
                         <Form.Item
                             name="gender"
@@ -102,7 +102,7 @@ const AdditionalDetails = () => {
                         </Form.Item>
                     </Col>
 
-                    <Col span={16}>
+                    <Col xs={24} sm={12} md={16}>
                         {/* Address Fields */}
                         <Form.Item
                             name="address"
@@ -119,7 +119,7 @@ const AdditionalDetails = () => {
                 </Row>
 
                 <Row gutter={16}>
-                    <Col span={8}>
+                    <Col xs={24} sm={8} md={8}>
                         <Form.Item
                             name="city"
                             label="City"
@@ -133,7 +133,7 @@ const AdditionalDetails = () => {
                         </Form.Item>
                     </Col>
 
-                    <Col span={8}>
+                    <Col xs={24} sm={8} md={8}>
                         <Form.Item
                             name="state"
                             label="State"
@@ -147,7 +147,7 @@ const AdditionalDetails = () => {
                         </Form.Item>
                     </Col>
 
-                    <Col span={8}>
+                    <Col xs={24} sm={8} md={8}>
                         <Form.Item
                             name="country"
                             label="Country"

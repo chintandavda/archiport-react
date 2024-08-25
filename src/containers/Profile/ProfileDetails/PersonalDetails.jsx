@@ -176,29 +176,30 @@ const PersonalDetails = () => {
                     </Upload>
                 </Form.Item>
                 <Row gutter={16}>
-                    <Col span={8}>
+                    <Col xs={24} sm={12} md={8}>
                         <Form.Item name="email" label="Email">
                             <Input disabled />
                         </Form.Item>
                     </Col>
-                    <Col span={8}>
+                    <Col xs={24} sm={12} md={8}>
                         <Form.Item name="first_name" label="First Name">
                             <Input />
                         </Form.Item>
                     </Col>
-                    <Col span={8}>
+                    <Col xs={24} sm={12} md={8}>
                         <Form.Item name="last_name" label="Last Name">
                             <Input />
                         </Form.Item>
                     </Col>
                 </Row>
+
                 <Row gutter={16}>
-                    <Col span={8}>
+                    <Col xs={24} sm={12} md={8}>
                         <Form.Item name="mobile_number" label="Mobile Number">
                             <Input />
                         </Form.Item>
                     </Col>
-                    <Col span={8}>
+                    <Col xs={24} sm={12} md={8}>
                         <Form.Item name="designation" label="Designation">
                             <Input />
                         </Form.Item>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
-import { notification } from "antd";
+import { notification, message } from "antd";
 import "./LikeButton.css";
 import DesignPostAPI from "../../../services/DesignPostAPI";
 
@@ -34,12 +34,18 @@ const LikeButton = ({
                 // Unlike the post
                 await DesignPostAPI.unlikeDesign(designId, username); // Pass username instead of userId
                 setLikeCount(likeCount - 1);
-                notification.success({ message: "Unliked!" });
+                message.success({
+                    content: "Unliked!",
+                    duration: 1, // duration in seconds
+                });
             } else {
                 // Like the post
                 await DesignPostAPI.likeDesign(designId, username); // Pass username instead of userId
                 setLikeCount(likeCount + 1);
-                notification.success({ message: "Liked!" });
+                message.success({
+                    content: "Liked!",
+                    duration: 1, // duration in seconds
+                });
             }
             setLiked(!liked);
             if (onLike) onLike(!liked); // Notify parent component if needed
