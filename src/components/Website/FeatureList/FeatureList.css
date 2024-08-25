@@ -39,3 +39,27 @@
     font-size: var(--font-size-sm);
     margin: 0;
 }
+
+@media screen and (max-width: 768px) {
+    .feature-list {
+        max-width: 285px;
+    }
+
+
+    .feature-item {
+        max-width: 260px;
+    }
+
+}
+
+@media screen and (max-width: 1300px) {
+    .feature-list {
+        max-width: 310px;
+    }
+
+
+    .feature-item {
+        max-width: 280px;
+    }
+
+}

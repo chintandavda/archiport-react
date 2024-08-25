@@ -71,7 +71,7 @@
 
 .signup-div>div {
     width: 50%;
-    margin: 0 3em;
+    margin: 0 2em;
 }
 
 .feature-list-container {
@@ -103,4 +103,9 @@
     .auth-header .logo-text {
         height: 30px;
     }
+
+    .feature-list-container {
+        padding: 0;
+    }
+
 }

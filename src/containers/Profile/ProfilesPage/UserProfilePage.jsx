@@ -186,19 +186,17 @@ const UserProfilePage = () => {
 
                 {/* Right column - User's Design Posts */}
                 <Col xs={24} md={16} lg={18}>
-                    <Card>
-                        <h2
-                            style={{
-                                fontFamily: "'Dancing Script', cursive",
-                                textAlign: "center",
-                                textTransform: "capitalize",
-                            }}
-                        >
-                            {profile.full_name || profile.username}'s Designs
-                        </h2>
-                        {/* Use the AllDesigns component to display the user's designs */}
-                        <AllDesigns username={profile.username} />
-                    </Card>
+                    <h2
+                        style={{
+                            fontFamily: "'Dancing Script', cursive",
+                            textAlign: "center",
+                            textTransform: "capitalize",
+                        }}
+                    >
+                        {profile.full_name || profile.username}'s Designs
+                    </h2>
+                    {/* Use the AllDesigns component to display the user's designs */}
+                    <AllDesigns username={profile.username} />
                 </Col>
             </Row>
         </Container>
