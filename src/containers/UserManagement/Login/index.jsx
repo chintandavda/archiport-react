@@ -9,7 +9,7 @@ import logo from "../../../assets/images/Logo/logo.png";
 import logoText from "../../../assets/images/Logo/logo-text.png";
 import FeatureList from "../../../components/Website/FeatureList";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { notification, Input, Modal, Form } from "antd";
+import { notification, Input, Modal, Form, message } from "antd";
 import ProfileAPI from "../../../services/ProfileAPI";
 
 const Login = () => {
@@ -70,21 +70,16 @@ const Login = () => {
 
             await login(access, refresh); // Login user
 
-            notification.success({
-                message: "Success",
-                description: response.data.message || "Logged in successfully",
+            message.success({
+                content: response.data.message || "Logged in successfully",
+                duration: 1,
             });
 
-            navigate("/", {
-                state: {
-                    message: "Logged in successfully",
-                    type: "success",
-                },
-            });
+            navigate("/");
         } catch (error) {
-            notification.error({
-                message: "Error",
-                description: error.response.data.error || "An error occurred",
+            message.error({
+                content: error.response.data.error || "An error occurred",
+                duration: 1,
             });
         } finally {
             setLoading(false);
@@ -97,17 +92,17 @@ const Login = () => {
 
     const handleSendOTP = async () => {
         if (!email) {
-            notification.error({
-                message: "Error",
-                description: "Please enter your email.",
+            message.error({
+                content: "Please enter your email.",
+                duration: 3,
             });
             return;
         }
 
         if (emailError) {
-            notification.error({
-                message: "Error",
-                description: emailError,
+            message.error({
+                content: emailError,
+                duration: 3,
             });
             return;
         }
