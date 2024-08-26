@@ -31,12 +31,10 @@ function App() {
     );
 }
 
-function AppWrapper() {
+export default function AppWrapper() {
     return (
         <Router>
             <App />
         </Router>
     );
 }
-
-export default AppWrapper;
