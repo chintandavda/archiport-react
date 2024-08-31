@@ -10,7 +10,8 @@ import { AuthContext } from "../../context/AuthContext";
 import { useDesigns } from "../../context/DesignContext";
 
 const breakpointColumnsObj = {
-    default: 3,
+    default: 4,
+    1600: 3,
     1100: 2,
     700: 1,
 };
@@ -70,7 +71,7 @@ const AllDesigns = ({ personalFeed, username }) => {
                     columnClassName="my-masonry-grid_column"
                 >
                     {/* Render skeletons while loading */}
-                    {Array.from({ length: 6 }).map((_, index) => (
+                    {Array.from({ length: 12 }).map((_, index) => (
                         <div key={index} style={{ width: "100%" }}>
                             <Card
                                 style={{

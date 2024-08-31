@@ -8,7 +8,7 @@ import Button from "../../../components/CommonComponents/Button";
 const HomePage = () => {
     const { isAuthenticated } = useContext(AuthContext);
     return (
-        <Container>
+        <div className="home-div">
             {!isAuthenticated && (
                 <div className="sign-up-here">
                     <div>
@@ -23,7 +23,7 @@ const HomePage = () => {
             <div>
                 <AllDesigns />
             </div>
-        </Container>
+        </div>
     );
 };
 
