@@ -1,5 +1,5 @@
 .profile-header {
-    background-color: var(--body-background);
+    background-color: var(--background-light);
     padding: 1.5em 3em;
     border-radius: 1em;
     margin-bottom: 20px;
@@ -54,7 +54,7 @@
 .profile-settings-row {
     min-height: 60vh;
     padding: 24px;
-    background-color: #f0f2f5;
+    background-color: var(--background-lighter);
 }
 
 .profile-settings-card {

@@ -22,7 +22,7 @@
     padding: 1em 5em;
     color: var(--text-light);
     border-radius: 250px;
-    box-shadow: 10px 10px 50px #00000025;
+    box-shadow: 10px 10px 50px var(--box-shadow);
     margin: 2em auto;
     width: 80vw;
     background-color: var(--background-color);
@@ -33,7 +33,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--background-color);
-    color: black;
+    color: var(--text-dark);
     border: 1px solid var(--border-light);
     padding: 10px 20px;
     border-radius: 4px;
