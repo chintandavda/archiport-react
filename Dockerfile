@@ -30,7 +30,7 @@ RUN npm run build
 FROM nginx:alpine
 
 # Install Certbot
-RUN apk add --no-cache certbot-nginx
+RUN apk add --no-cache certbot certbot-nginx
 
 # Remove default Nginx configuration
 RUN rm /etc/nginx/conf.d/default.conf
@@ -43,10 +43,14 @@ COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/build /usr/share/nginx/html
 
 # Expose the port that the app runs on
-EXPOSE 80 443
+EXPOSE 80 
+EXPOSE 443
 
 # Obtain SSL certificate with Certbot
-RUN certbot --nginx --non-interactive --agree-tos --email davdachintan1@gmail.com -d archiport.ap-south-1.elasticbeanstalk.com
+#RUN certbot --nginx --non-interactive --agree-tos --email davdachintan1@gmail.com -d archiport.ap-south-1.elasticbeanstalk.com
 
 # Start Nginx server
-CMD ["nginx", "-g", "daemon off;"]
+#CMD ["nginx", "-g", "daemon off;"]
+
+# Run Certbot and start Nginx
+CMD ["sh", "-c", "certbot --nginx --non-interactive --agree-tos --email davdachintan1@gmail.com -d archiport.ap-south-1.elasticbeanstalk.com && nginx -g 'daemon off;'"]
