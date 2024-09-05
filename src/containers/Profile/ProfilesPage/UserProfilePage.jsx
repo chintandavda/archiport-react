@@ -77,12 +77,14 @@ const UserProfilePage = () => {
                         <h2 className="text-capitalize">
                             {profile.full_name || profile.username}
                         </h2>
-                        <p>{profile.email}</p>
-                        {profile.designation && <p>{profile.designation}</p>}
+                        <span>{profile.email}</span>
+                        {profile.designation && (
+                            <span>{profile.designation}</span>
+                        )}
                         {profile.about && (
-                            <p>
+                            <span>
                                 <strong>About:</strong> {profile.about}
-                            </p>
+                            </span>
                         )}
 
                         {(profile.city || profile.state || profile.country) && (
@@ -185,7 +187,7 @@ const UserProfilePage = () => {
                 </Col>
 
                 {/* Right column - User's Design Posts */}
-                <Col xs={24} md={16} lg={18}>
+                <Col xs={24} md={16} lg={18} className="friend-design-div">
                     <h2
                         style={{
                             fontFamily: "'Dancing Script', cursive",

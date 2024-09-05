@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { AuthContext } from "../../context/AuthContext";
@@ -26,6 +26,8 @@ const NavigationBar = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    const menuRef = useRef(null);
+
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
@@ -39,6 +41,20 @@ const NavigationBar = () => {
         setLoading(false);
         navigate("/");
     };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setIsMenuOpen(false); // Close the menu when clicking outside
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [menuRef]);
 
     const menu = (
         <Menu>
@@ -71,7 +87,10 @@ const NavigationBar = () => {
                 <MenuOutlined />
             </button>
 
-            <div className={`navbar-links ${isMenuOpen ? "active" : ""}`}>
+            <div
+                className={`navbar-links ${isMenuOpen ? "active" : ""}`}
+                ref={menuRef}
+            >
                 <Link to="/">
                     <HiOutlineHome /> Home
                 </Link>

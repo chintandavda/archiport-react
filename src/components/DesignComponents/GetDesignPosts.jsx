@@ -23,30 +23,6 @@ const AllDesigns = ({ personalFeed, username }) => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const { designs, refreshDesigns } = useDesigns();
 
-    // const fetchDesigns = useCallback(async () => {
-    //     setLoading(true); // Start loading
-    //     try {
-    //         let data;
-
-    //         if (personalFeed) {
-    //             // Fetch personal designs
-    //             data = await DesignPostAPI.getMyDesigns();
-    //         } else if (loggedInUser) {
-    //             // Fetch designs visible to logged-in users
-    //             data = await DesignPostAPI.getDesigns();
-    //         } else {
-    //             // Fetch public designs for unauthenticated users
-    //             data = await DesignPostAPI.getPublicDesigns();
-    //         }
-
-    //         setdesigns(data); // Update local designs state
-    //     } catch (error) {
-    //         console.error("Error fetching designs:", error);
-    //     } finally {
-    //         setLoading(false); // Stop loading once data is fetched
-    //     }
-    // }, [personalFeed, loggedInUser]);
-
     useEffect(() => {
         setLoading(true);
         refreshDesigns(personalFeed, username).finally(() => setLoading(false)); // Refresh designs on component load

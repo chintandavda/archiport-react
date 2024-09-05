@@ -4,6 +4,7 @@ import { UploadOutlined } from "@ant-design/icons";
 import DesignPostAPI from "../../services/DesignPostAPI";
 import imageCompression from "browser-image-compression";
 import { useDesigns } from "../../context/DesignContext";
+import { useLocation } from "react-router-dom";
 
 const { TextArea } = Input;
 const { Dragger } = Upload;
@@ -14,6 +15,7 @@ const CreatePostModal = ({ isOpen, onRequestClose }) => {
     const [file, setFile] = useState(null);
     const [preview, setPreview] = useState(null);
     const [loading, setLoading] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         setCaption("");
@@ -77,7 +79,11 @@ const CreatePostModal = ({ isOpen, onRequestClose }) => {
         try {
             await DesignPostAPI.createDesign(formData);
             onRequestClose(); // Close the modal on success
-            refreshDesigns();
+            if (location.pathname === "/profile") {
+                refreshDesigns(true); // This will ensure it fetches only personal designs
+            } else {
+                refreshDesigns(false); // Fetch the general feed
+            }
             notification.success({
                 message: "Design Post Created",
                 description: "Your design post has been created successfully.",

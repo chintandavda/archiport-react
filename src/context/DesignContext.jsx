@@ -16,6 +16,7 @@ export const DesignProvider = ({ children }) => {
         async (personalFeed = false, username = null) => {
             try {
                 let data;
+                console.log("personal feed", personalFeed);
 
                 if (username) {
                     // Fetch designs for a specific user by their ID

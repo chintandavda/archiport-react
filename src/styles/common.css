@@ -101,6 +101,10 @@ input:disabled {
     width: 100%;
 }
 
+a {
+    color: var(--mint-green);
+}
+
 
 /* Media Queries */
 

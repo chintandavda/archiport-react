@@ -88,8 +88,7 @@
     position: absolute;
     top: 60px;
     right: 0;
-    background-color: var(--primary-color);
-    width: 100%;
+    background-color: var(--background-light);
     padding: 1em;
     border-radius: 0.5em;
     box-shadow: 0px 2px 6px var(--box-shadow);

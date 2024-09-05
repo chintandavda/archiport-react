@@ -27,5 +27,12 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    gap: 6px;
     background-color: var(--background-lighter);
+}
+
+@media screen and (max-width: 768px) {
+    .friend-design-div {
+        margin-top: 16px;
+    }
 }

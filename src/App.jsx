@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
 import mainRoutes from "./routes/mainRoutes";
 import authRoutes from "./routes/authRoutes";
 import { ConfigProvider } from "antd";
+import { DesignProvider } from "./context/DesignContext";
 
 function App() {
     const location = useLocation();
@@ -34,7 +35,9 @@ function App() {
 export default function AppWrapper() {
     return (
         <Router>
-            <App />
+            <DesignProvider>
+                <App />
+            </DesignProvider>
         </Router>
     );
 }
