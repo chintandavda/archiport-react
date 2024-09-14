@@ -39,7 +39,7 @@ const UserProfilePage = () => {
 
     if (loading) {
         return (
-            <Container>
+            <div className="home-div">
                 <Row gutter={16}>
                     {/* Section 1 */}
                     <Col xs={24} md={8} lg={6}>
@@ -53,7 +53,7 @@ const UserProfilePage = () => {
                         </div>
                     </Col>
                 </Row>
-            </Container>
+            </div>
         );
     }
 
@@ -66,7 +66,7 @@ const UserProfilePage = () => {
     };
 
     return (
-        <Container>
+        <div className="home-div">
             <Row gutter={16}>
                 {/* Left column - User Details */}
                 <Col xs={24} md={8} lg={6}>
@@ -201,7 +201,7 @@ const UserProfilePage = () => {
                     <AllDesigns username={profile.username} />
                 </Col>
             </Row>
-        </Container>
+        </div>
     );
 };
 
