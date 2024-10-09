@@ -1,3 +1,6 @@
 build:
-    docker:
-        web: Dockerfile
+  docker:
+    web: Dockerfile
+
+run:
+  web: /bin/bash -c "npm start"  # or another command to start your app
