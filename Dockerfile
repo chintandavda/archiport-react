@@ -1,22 +1,24 @@
-# Use the official Node.js image
+# Use a Node.js base image
 FROM node:14-alpine
 
-# Set working directory
+# Set the working directory
 WORKDIR /app
 
-# Copy package.json and install dependencies
+# Install dependencies
 COPY package.json ./
 RUN npm install
 
-# Copy the rest of the application
+# Copy the app
 COPY . .
 
-# Build the app for production
+# Build the app
 RUN npm run build
 
-# Serve the app using a simple HTTP server
+# Install 'serve' to serve the static files
 RUN npm install -g serve
+
+# Set the command to start the app
 CMD ["serve", "-s", "build"]
 
-# Expose the port Heroku will use
-EXPOSE 3000
+# Expose port 80
+EXPOSE 80
